@@ -6,9 +6,48 @@ import Moment from "react-moment";
 import OwnersAccounts from "../../../components/OwnerComponents/OwnersAccounts/OwnersAccounts";
 
 
-const OwnerDetails = () => {
+const OwnerDetails = (props) => {
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        let id = props.match.params.id;
+        let url = '/api/owner/' + id + '/account';
+        dispatch(repositoryActions.getData(url, {...props}))
+    },[props,dispatch])
+    
     const owner = useSelector(state=> state.repository.data);
+
+    const renderTypeOfUserConditionally = (owner) => {
+        let typeOfUser = null;
+    
+        if (owner.accounts && owner.accounts.length <= 2) {
+            typeOfUser = (
+                <Row>
+                    <Col md={3}>
+                        <strong>Type of user:</strong>
+                    </Col>
+                    <Col md={3}>
+                        <span className={'text-success'}>Beginner user.</span>
+                    </Col>
+                </Row>
+            );
+        }
+        else {
+            typeOfUser = (
+                <Row>
+                    <Col md={3}>
+                        <strong>Type of user:</strong>
+                    </Col>
+                    <Col md={3}>
+                        <span className={'text-info'}>Advanced user.</span>
+                    </Col>
+                </Row>
+            );
+        }
+    
+        return typeOfUser;
+    }
 
     return (
         <Fragment>

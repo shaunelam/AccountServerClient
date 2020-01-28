@@ -6,10 +6,17 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NotFound from '../components/ErrorPages/NotFound/NotFound';
 import asyncComponent from '../hoc/AsyncComponent/AsyncComponent';
 import InternalServer from '../components/ErrorPages/NotFound/InternalServer/InternalServer';
-import OwnerDetails from './Owner/OwnerDetails/OwnerDetails';
 
 const AsyncOwnerList = asyncComponent(() => {
   return import('./Owner/OwnerList/OwnerList');
+});
+
+const AsyncOwnerDetails = asyncComponent(() => {
+  return import('./Owner/OwnerDetails/OwnerDetails');
+});
+
+const AsyncCreateOwner = asyncComponent(() => {
+  return import('./Owner/CreateOwner/CreateOwner');
 });
 
 function App() {
@@ -19,7 +26,8 @@ function App() {
         <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/owner-list" component={AsyncOwnerList} />
-        <Route path="/ownerDetails/:id" component={OwnerDetails} />
+        <Route path="/ownerDetails/:id" component={AsyncOwnerDetails} />
+        <Route path="/createOwner" component={AsyncCreateOwner} />
         <Route path="/500" component={InternalServer} />
         <Route path="*" component={NotFound} />
         </Switch>

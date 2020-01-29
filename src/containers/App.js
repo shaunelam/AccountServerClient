@@ -19,6 +19,14 @@ const AsyncCreateOwner = asyncComponent(() => {
   return import('./Owner/CreateOwner/CreateOwner');
 });
 
+const AsyncUpdateOwner = asyncComponent(() => {
+  return import('./Owner/UpdateOwner/UpdateOwner');
+});
+
+const AsyncDeleteOwner = asyncComponent(() => {
+  return import('./Owner/DeleteOwner/DeleteOwner');
+});
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +36,8 @@ function App() {
         <Route path="/owner-list" component={AsyncOwnerList} />
         <Route path="/ownerDetails/:id" component={AsyncOwnerDetails} />
         <Route path="/createOwner" component={AsyncCreateOwner} />
+        <Route path="/updateOwner/:id" component={AsyncUpdateOwner} />
+        <Route path="/deleteOwner/:id" component={AsyncDeleteOwner} />
         <Route path="/500" component={InternalServer} />
         <Route path="*" component={NotFound} />
         </Switch>

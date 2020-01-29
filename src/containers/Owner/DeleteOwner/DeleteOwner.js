@@ -21,7 +21,7 @@ const DeleteOwner = (props) => {
     const id = props.match.params.id;
     const url = '/api/owner/' + id;
     dispatch(repositoryActions.getData(url, { ...props }));
-},[]);
+},[props, dispatch]);
 
   let owner = { ...data };
 

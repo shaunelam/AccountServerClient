@@ -1,10 +1,12 @@
 import React from 'react';
 import './NotFound.css'
+import Logo from '../../../components/Images/error.png'
 
 const NotFound = (props) => {
     return (
         <p className={'notFound'}>
-            "404 SORRY COULDN'T FIND IT!!!"
+            <img src={Logo} alt="NotFoundPage" />
+            <h1>Page Not Found</h1>
         </p>
     )
 }

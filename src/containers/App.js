@@ -19,12 +19,24 @@ const AsyncCreateOwner = asyncComponent(() => {
   return import('./Owner/CreateOwner/CreateOwner');
 });
 
+const AsyncCreateAccount = asyncComponent(() => {
+  return import('./Account/CreateAccount/CreateAccount');
+});
+
 const AsyncUpdateOwner = asyncComponent(() => {
   return import('./Owner/UpdateOwner/UpdateOwner');
 });
 
 const AsyncDeleteOwner = asyncComponent(() => {
   return import('./Owner/DeleteOwner/DeleteOwner');
+});
+
+const AsyncDeleteAccount = asyncComponent(() => {
+  return import('./Account/DeleteAccount');
+});
+
+const AsyncUpdateAccount = asyncComponent(() => {
+  return import('./Account/UpdateAccount'); 
 });
 
 function App() {
@@ -36,7 +48,10 @@ function App() {
         <Route path="/owner-list" component={AsyncOwnerList} />
         <Route path="/ownerDetails/:id" component={AsyncOwnerDetails} />
         <Route path="/createOwner" component={AsyncCreateOwner} />
+        <Route path="/createAccount/:ownerId" component={AsyncCreateAccount} />
         <Route path="/updateOwner/:id" component={AsyncUpdateOwner} />
+        <Route path="/updateAccount/:id" component={AsyncUpdateAccount} />
+        <Route path="/deleteAccount/:id" component={AsyncDeleteAccount} />
         <Route path="/deleteOwner/:id" component={AsyncDeleteOwner} />
         <Route path="/500" component={InternalServer} />
         <Route path="*" component={NotFound} />

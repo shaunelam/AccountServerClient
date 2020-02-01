@@ -1,8 +1,15 @@
-.homeText{
-    font-size: 35px;
-    color: red;
+.homeText > img {
     text-align: center;
-    position: relative;
-    top:30px;
-    text-shadow: 2px 2px 2px gray;
+    position: absolute;
+    width: 55vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top:125px;
+}
+
+.text {
+    text-align: center;
+    font-size: 9vh;
+    color: rgb(104, 104, 201);
+    font-weight: 900;
 }

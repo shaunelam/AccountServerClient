@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Well, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import * as repositoryActions from "../../../store/actions/repositoryActions";
 import Moment from "react-moment";
 import OwnersAccounts from "../../../components/OwnerComponents/OwnersAccounts/OwnersAccounts";
@@ -48,9 +49,15 @@ const OwnerDetails = (props) => {
     
         return typeOfUser;
     }
-
+    const url = '/createAccount/' + props.match.params.id;
     return (
         <Fragment>
+           <Row>
+                <Col mdOffset={10} md={2}>
+                    <Link to={url} >Create Account</Link>
+                </Col>
+            </Row>
+            <br />
             <Well>
                 <Row>
                     <Col md={3}>
@@ -70,7 +77,7 @@ const OwnerDetails = (props) => {
                 </Row>
                 {renderTypeOfUserConditionally(owner)}
             </Well>
-            <OwnersAccounts accounts={owner.accounts} />
+            <OwnersAccounts accounts={owner.accounts} {...props}/>
         </Fragment>
     )
 }

@@ -21,11 +21,6 @@ const Navigation = (props) => {
                                 Owner Actions
                             </NavItem>
                         </LinkContainer>
-                        <LinkContainer to={'/account-list'}>
-                            <NavItem eventKey={2}>
-                                Account Actions
-                            </NavItem>
-                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
